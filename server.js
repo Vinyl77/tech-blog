@@ -22,6 +22,8 @@ const sess = {
 
 app.use(session(sess));
 
+
+console.log(helpers.format_date)
 const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
