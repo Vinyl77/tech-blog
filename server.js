@@ -23,11 +23,13 @@ const sess = {
 app.use(session(sess));
 
 
-console.log(helpers.format_date)
+console.log('here', helpers.format_date)
 const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.set('views',__dirname + '/views');
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

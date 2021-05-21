@@ -6,24 +6,25 @@ router.get('/', async (req, res) => {
   try {
 
     const postData = await Post.findAll({
-      attributes:[
-        'id',
-        'title',
-        'content',
-        'created_at'
+      include:[User],
+      // attributes:[
+      //   'id',
+      //   'title',
+      //   'content',
+      //   'created_at'
 
-      ],
-      include: [
-        {
-          model: Comment,
-          attributes:['id', 'comment_text','post_id', 'user_id'],
-          include:{
-            model: User,
-            attributes: ['username']
-          }
+      // ],
+      // include: [
+      //   {
+      //     model: Comment,
+      //     attributes:['id', 'comment_text','post_id', 'user_id'],
+      //     include:{
+      //       model: User,
+      //       attributes: ['username']
+      //     }
         
-        }
-      ],
+      //   }
+      // ],
     });
     
     console.log(postData);
@@ -56,11 +57,13 @@ router.get('/post/:id', async (req, res) => {
       // serialize the data
       const post = postData.get({ plain: true });
       // which view should we render for a single-post?
+      console.log('POST', {post})
       res.render('single-post', { post });
     } else {
       res.status(404).end();
     }
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });

@@ -7,6 +7,7 @@ const sequelize = require('../config/config');
 class Comment extends Model {}
 
 Comment.init({
+   
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -14,12 +15,10 @@ Comment.init({
         autoIncrement: true
 
     },
-    comment_text: {
+    body: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate:{
-            len: [1]
-        }
+     
     },
     user_id:{
         type: DataTypes.INTEGER,

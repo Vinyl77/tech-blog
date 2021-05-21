@@ -3,15 +3,16 @@
    {{#each posts}}
       <div class="title">
         {{title}}
-        {{!-- <a href="/post/{{id}}" target="_blank">{{title}}</a> --}}
-        {{!-- <span>{{post_content}}</span> --}}
+        <a href="/post/{{id}}" target="_blank">{{title}}</a>
+        <span>{{post_content}}</span>
       </div>
       <div class="meta">
         posted by {{user.username}} on
-        {{format_date created_at}}
+        {{format_date createdAt}}
         |
-        {{!-- <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a> --}}
+        <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
       </div>
       {{/each}}
+        <a href="/dashboard/new"> New Post</a>
 </article>
 {{!-- <script src="/js/comment.js"></script> --}}
